@@ -63,7 +63,7 @@ export default {
         imagem: this.$refs.files.files[0]
       }
       
-      this.$fire.storage.ref().child(sha1('')+'.jpg').put(noticia.imagem).then(res =>{
+      this.$fire.storage.ref().child(noticia.imagem.name +'.jpg').put(noticia.imagem).then(res =>{
         noticia.imagem = res.ref.fullPath
         console.log(noticia)
         this.$fire.firestore.collection('noticias').add(noticia).then(ref =>{

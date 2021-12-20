@@ -1,28 +1,42 @@
 <template>
-    <div class="center">
-        <div class="property-card">
+  <div class="categorias">
+    <h2>{{noticia.categoria}}</h2> 
+      <div class="center">
+          <div class="property-card">
           <a href="#">
             <div class="property-image">
+              <img :src="noticia.imagem">
               <div class="property-image-title">
                 <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
               </div>
             </div></a>
           <div class="property-description">
-            <h5> Card Title </h5>
-            <p>Lorem Ipsum Dipsum hortata. Mixcall Horcho. Mixwell Chingo. More Bingo. Lorem Ipum doth be hard.</p>
+            <h5> {{noticia.titulo}} </h5>
+            <p>{{noticia.descricao}}</p>
           </div>
-          <div class="descricao">
-                <p>espores</p>
-          </div>  
         </div>
-        
-    </div>
+
+      </div>
+  </div>    
 </template>
 
 <script>
 export default {
     nome: 'Cartao',
+    props:{
+      noticia: {
+        type: Object,
+        default:{
+          titulo:'',
+          descricao:'',
+          imagem: '',
+          categoria:''
+        }
+    }
+    }
+
 }
+
 </script>
 
 <style>
@@ -38,7 +52,19 @@ export default {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+.categorias
+{
+  margin-bottom: 10%;
+      display: flex;
+    align-items: center;
+    flex-direction: column;
 
+}
+.h2{
+      margin: 15px;
+    font-size: 1.4em;
+    font-weight: 700;
+}
 h5
 {
   margin:0px;
@@ -52,11 +78,14 @@ p
 }
 
 .center
-{
-    display: flex;
-  height:100vh;
-  width:100%;
-  
+{display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* End Non-Essential  */
@@ -91,7 +120,7 @@ p
   position:Absolute;
   top:0px;
   
-  background-image:url('https://cdn.photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg');
+ /* background-image:url('https://cdn.photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg');*/
   background-size:cover;
   background-repeat:no-repeat;
 }
